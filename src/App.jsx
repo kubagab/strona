@@ -6,6 +6,7 @@ import TermsPage from './pages/TermsPage'
 import BlogPage from './pages/BlogPage'
 import ArticlePage from './pages/ArticlePage'
 import NewsletterPopup from './components/NewsletterPopup'
+import ExitIntentPopup from './components/ExitIntentPopup'
 import { CartProvider } from './context/CartContext'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <CartProvider>
         <Router>
           <NewsletterPopup />
+          <ExitIntentPopup />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/kawa/:kategoria" element={<CategoryPage />} />

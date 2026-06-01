@@ -1,28 +1,36 @@
 import { useState, useEffect } from 'react';
 
-export default function NewsletterPopup() {
+export default function ExitIntentPopup() {
     const [isVisible, setIsVisible] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        // Sprawdź, czy użytkownik już widział popup
-        const timer = setTimeout(() => {
-            const hasSeenPopup = sessionStorage.getItem('hasSeenNewsletterPopup');
-            const hasSeenExitIntent = sessionStorage.getItem('hasSeenExitIntentPopup');
-            
-            if (!hasSeenPopup && !hasSeenExitIntent) {
-                setIsVisible(true);
+        const handleMouseLeave = (e) => {
+            // Sprawdzamy czy kursor ucieka do góry okna (w kierunku krzyżyka lub innej karty)
+            if (e.clientY <= 0 || e.clientY < 20) {
+                const hasSeenExitPopup = sessionStorage.getItem('hasSeenExitIntentPopup');
+                const hasSeenNewsletter = sessionStorage.getItem('hasSeenNewsletterPopup');
+                
+                // Jeśli widział już jakikolwiek popup w tej sesji, nie pokazujemy go ponownie
+                if (!hasSeenExitPopup && !hasSeenNewsletter) {
+                    setIsVisible(true);
+                    sessionStorage.setItem('hasSeenExitIntentPopup', 'true');
+                }
             }
-        }, 5000);
+        };
+
+        // Nasłuchiwanie wyjścia myszki poza dokument
+        document.addEventListener('mouseleave', handleMouseLeave);
         
-        return () => clearTimeout(timer);
+        return () => {
+            document.removeEventListener('mouseleave', handleMouseLeave);
+        };
     }, []);
 
     const closePopup = () => {
         setIsVisible(false);
-        sessionStorage.setItem('hasSeenNewsletterPopup', 'true');
     };
 
     const handleSubmit = async (e) => {
@@ -55,8 +63,7 @@ export default function NewsletterPopup() {
 
             if (response.ok) {
                 setIsSubmitted(true);
-                sessionStorage.setItem('hasSeenNewsletterPopup', 'true');
-                // Automatyczne zamknięcie po 5 sekundach
+                // Zamknięcie po 5 sekundach
                 setTimeout(() => {
                     setIsVisible(false);
                 }, 5000);
@@ -84,15 +91,15 @@ export default function NewsletterPopup() {
                     </div>
                 ) : (
                     <>
-                        <h2>Odbierz 15% rabatu!</h2>
-                        <p>Zapisz się do naszego newslettera, aby otrzymać kod zniżkowy na swoje zamówienie oraz informacje o rzemieślniczej kawie.</p>
+                        <h2>Nie opuszczaj nas! ☕</h2>
+                        <p>Zostań z nami chwilę dłużej. Odbierz natychmiastowe <strong>15% rabatu</strong> na swoje pierwsze zamówienie. Zostaw maila, a kod poleci prosto do Ciebie!</p>
                         {error && <p className="error-msg">{error}</p>}
                         <form onSubmit={handleSubmit} className="newsletter-form">
                             <input type="text" name="firstName" placeholder="Imię" required onInvalid={(e) => e.target.setCustomValidity('To pole jest wymagane')} onInput={(e) => e.target.setCustomValidity('')} />
                             <input type="text" name="lastName" placeholder="Nazwisko" required onInvalid={(e) => e.target.setCustomValidity('To pole jest wymagane')} onInput={(e) => e.target.setCustomValidity('')} />
                             <input type="email" name="email" placeholder="Adres e-mail" required onInvalid={(e) => e.target.setCustomValidity('Proszę podać poprawny adres e-mail, zawierający znak @')} onInput={(e) => e.target.setCustomValidity('')} />
                             <button type="submit" disabled={isLoading} className="btn-primary">
-                                {isLoading ? 'Wysyłanie...' : 'Odbierz kod rabatowy'}
+                                {isLoading ? 'Wysyłanie...' : 'Odbierz 15% zniżki'}
                             </button>
                         </form>
                     </>
