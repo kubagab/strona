@@ -10,14 +10,8 @@ export default function ExitIntentPopup() {
         const handleMouseLeave = (e) => {
             // Sprawdzamy czy kursor ucieka do góry okna (w kierunku krzyżyka lub innej karty)
             if (e.clientY <= 0 || e.clientY < 20) {
-                const hasSeenExitPopup = sessionStorage.getItem('hasSeenExitIntentPopup');
-                const hasSeenNewsletter = sessionStorage.getItem('hasSeenNewsletterPopup');
-                
-                // Jeśli widział już jakikolwiek popup w tej sesji, nie pokazujemy go ponownie
-                if (!hasSeenExitPopup && !hasSeenNewsletter) {
-                    setIsVisible(true);
-                    sessionStorage.setItem('hasSeenExitIntentPopup', 'true');
-                }
+                setIsVisible(true);
+                sessionStorage.setItem('hasSeenExitIntentPopup', 'true');
             }
         };
 
