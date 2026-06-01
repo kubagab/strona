@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Strony główne -->
+    <url>
+        <loc>https://kawapremium.pl/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://kawapremium.pl/blog</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://kawapremium.pl/kontakt</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://kawapremium.pl/regulamin</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Kategorie Kaw -->
+    <url><loc>https://kawapremium.pl/kawa/robusta</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/arabica</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/espresso</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/przelew</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/brazylia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/wietnam</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/kolumbia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/indonezja</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/honduras</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://kawapremium.pl/kawa/etiopia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+    <!-- Artykuły Blogowe -->
+    <url><loc>https://kawapremium.pl/blog/jak-parzyc-kawe</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://kawapremium.pl/blog/arabica-vs-robusta</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://kawapremium.pl/blog/przechowywanie-kawy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
